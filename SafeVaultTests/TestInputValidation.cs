@@ -1,24 +1,27 @@
 ﻿using NUnit.Framework;
 
 [TestFixture]
-public class TestInputValidation{
+public class TestInputValidation
+{
     [Test]
-    public void TestForSQLInjection(){
+    public void TestForSQLInjection()
+    {
         string malicious = "'; DROP TABLE Users; --";
         string sanitized = InputSanitizer.SanitizeString(malicious);
 
-        Assert.IsFalse(sanitized.Constains("DROP"));
-        Assert.IsFalse(sanitized.Constains("--"));
-        Assert.IsFalse(sanitized.Constains("'"));
+        Assert.That(sanitized.Contains("DROP"), Is.False);
+        Assert.That(sanitized.Contains("--"), Is.False);
+        Assert.That(sanitized.Contains("'"), Is.False);
     }
 
     [Test]
-    public void TestForXXS(){
+    public void TestForXSS()
+    {
         string malicious = "<script>alert('hacked');</script>";
-        string sanitized = InputSanitizeString(malicious);
+        string sanitized = InputSanitizer.SanitizeString(malicious);
 
-        Assert.IsFalse(sanitized.Constains("<script>"));
-        Assert.IsFalse(sanitized.Constains("</script>"));
-        Assert.IsFalse(sanitized.Constains("&lt;") || sanitized.Contains("alert"));
+        Assert.That(sanitized.Contains("<script>"), Is.False);
+        Assert.That(sanitized.Contains("</script>"), Is.False);
+        Assert.That(sanitized.Contains("&lt;") || sanitized.Contains("alert"), Is.False);
     }
 }
