@@ -192,10 +192,10 @@ This allows tests to run without database dependencies while maintaining product
 
 SafeVault addresses multiple OWASP Top 10 vulnerabilities:
 
-- ✅ A01: Broken Access Control
-- ✅ A02: Cryptographic Failures
-- ✅ A03: Injection
-- ✅ A07: Identification and Authentication Failures
+-  A01: Broken Access Control
+-  A02: Cryptographic Failures
+-  A03: Injection
+-  A07: Identification and Authentication Failures
 
 ## Contributing
 
@@ -219,8 +219,6 @@ A total of 1 test files matched the specified pattern.
 Passed!  - Failed:     0, Passed:    14, Skipped:     0, Total:    14, Duration: 954 ms
 ```
 
-All 14 tests passing ✅
+All 14 tests passing 
 
----
 
-**Built with security in mind. Keep your data safe with SafeVault.**
